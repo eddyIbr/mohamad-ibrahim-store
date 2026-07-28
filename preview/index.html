@@ -1,0 +1,656 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Mohamad Ibrahim Store Preview</title><style>:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f4f7fb;
+  color: #1d2735;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: #f4f7fb;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(30, 99, 221, 0.25);
+  outline-offset: 2px;
+}
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.9fr) minmax(280px, 1.3fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 18px clamp(22px, 4vw, 64px);
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #dce4ef;
+  box-shadow: 0 8px 24px rgba(25, 41, 66, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #172335;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(135deg, #1257bc, #2f7deb);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  box-shadow: 0 9px 20px rgba(30, 99, 221, 0.24);
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.brand small {
+  margin-top: 3px;
+  color: #6f7d90;
+  font-size: 0.72rem;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 46px;
+  padding: 0 46px 0 16px;
+  border: 1px solid #cad5e3;
+  border-radius: 13px;
+  background: #f8fafc;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.search-box:focus-within {
+  border-color: #1e63dd;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(30, 99, 221, 0.1);
+}
+
+.search-box svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  fill: none;
+  stroke: #6c7b8e;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #172335;
+}
+
+.search-box input::placeholder {
+  color: #8794a5;
+}
+
+.clear-search {
+  position: absolute;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  color: #637287;
+  background: #e6ebf2;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.cart-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: #172335;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(23, 35, 53, 0.18);
+}
+
+.cart-button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cart-count {
+  display: grid;
+  place-items: center;
+  min-width: 23px;
+  height: 23px;
+  padding: 0 6px;
+  border-radius: 20px;
+  color: #172335;
+  background: white;
+  font-size: 0.75rem;
+}
+
+.content-layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+  width: min(1480px, 100%);
+  margin: 0 auto;
+  padding: 36px clamp(22px, 4vw, 64px) 54px;
+}
+
+.category-panel {
+  align-self: start;
+  position: sticky;
+  top: 112px;
+  padding: 20px;
+  border: 1px solid #dce4ef;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 12px 28px rgba(25, 41, 66, 0.07);
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.panel-heading span {
+  font-weight: 800;
+}
+
+.panel-heading small {
+  color: #8190a2;
+  font-size: 0.7rem;
+}
+
+.category-list {
+  display: grid;
+  gap: 6px;
+}
+
+.category-list button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  color: #425166;
+  background: transparent;
+  text-align: left;
+  transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.category-list button:hover {
+  background: #f0f5fc;
+  transform: translateX(2px);
+}
+
+.category-list button.active {
+  color: white;
+  background: linear-gradient(135deg, #155cc8, #2778e7);
+  font-weight: 700;
+  box-shadow: 0 7px 16px rgba(30, 99, 221, 0.22);
+}
+
+.category-count {
+  min-width: 24px;
+  padding: 3px 6px;
+  border-radius: 10px;
+  background: rgba(102, 119, 143, 0.11);
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.category-list button.active .category-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.shipping-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 13px;
+  border: 1px dashed #c8d6e7;
+  border-radius: 12px;
+  background: #f8fbff;
+}
+
+.shipping-card > span {
+  font-size: 1.35rem;
+}
+
+.shipping-card strong,
+.shipping-card small {
+  display: block;
+}
+
+.shipping-card strong {
+  font-size: 0.78rem;
+}
+
+.shipping-card small {
+  margin-top: 2px;
+  color: #748398;
+  font-size: 0.65rem;
+}
+
+.product-area {
+  min-width: 0;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #1e63dd;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.results-header h1 {
+  margin: 0;
+  color: #172335;
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+  letter-spacing: -0.04em;
+}
+
+.results-header p:not(.eyebrow) {
+  margin: 7px 0 0;
+  color: #738196;
+  font-size: 0.9rem;
+}
+
+.status-chip {
+  padding: 7px 10px;
+  border: 1px solid #b9d2f7;
+  border-radius: 20px;
+  color: #1558b6;
+  background: #eaf3ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.product-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dce4ef;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 9px 24px rgba(25, 41, 66, 0.07);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: #c8d7ea;
+  box-shadow: 0 18px 32px rgba(25, 41, 66, 0.13);
+}
+
+.product-image-wrap {
+  position: relative;
+  aspect-ratio: 1.45 / 1;
+  overflow: hidden;
+  background: #eef3f9;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 250ms ease;
+}
+
+.product-card:hover .product-image-wrap img {
+  transform: scale(1.025);
+}
+
+.product-id,
+.stock-badge {
+  position: absolute;
+  top: 12px;
+  padding: 5px 8px;
+  border-radius: 20px;
+  font-size: 0.63rem;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(17, 28, 43, 0.12);
+}
+
+.product-id {
+  left: 12px;
+  color: #4d5d73;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.stock-badge {
+  right: 12px;
+  color: #137444;
+  background: rgba(232, 250, 240, 0.95);
+}
+
+.stock-badge.out-of-stock {
+  color: #a23c38;
+  background: rgba(255, 235, 233, 0.96);
+}
+
+.product-content {
+  padding: 18px;
+}
+
+.product-category {
+  color: #1e63dd;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-content h2 {
+  margin: 7px 0 8px;
+  color: #18263a;
+  font-size: 1.02rem;
+}
+
+.product-content p {
+  min-height: 44px;
+  margin: 0;
+  color: #728095;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 17px;
+}
+
+.product-footer strong {
+  color: #111d2d;
+  font-size: 1.08rem;
+}
+
+.product-footer button,
+.empty-state button {
+  min-height: 38px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  background: #1e63dd;
+  font-size: 0.72rem;
+  font-weight: 800;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.product-footer button:hover:not(:disabled),
+.empty-state button:hover {
+  background: #164faa;
+  transform: translateY(-1px);
+}
+
+.product-footer button:disabled {
+  cursor: not-allowed;
+  color: #8b98a9;
+  background: #e5eaf0;
+}
+
+.empty-state {
+  display: grid;
+  justify-items: center;
+  padding: 72px 24px;
+  border: 1px dashed #cbd6e4;
+  border-radius: 18px;
+  background: white;
+  text-align: center;
+}
+
+.empty-state > div {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #1e63dd;
+  background: #e9f2ff;
+  font-size: 2rem;
+}
+
+.empty-state h2 {
+  margin: 16px 0 6px;
+}
+
+.empty-state p {
+  margin: 0 0 18px;
+  color: #758398;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: auto;
+  padding: 20px clamp(22px, 4vw, 64px);
+  border-top: 1px solid #dce4ef;
+  color: #738196;
+  background: white;
+  font-size: 0.75rem;
+}
+
+.visually-hidden,
+.screen-reader-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1120px) {
+  .site-header {
+    grid-template-columns: 1fr minmax(260px, 1fr) auto;
+    gap: 18px;
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .site-header {
+    position: static;
+    grid-template-columns: 1fr auto;
+    padding: 15px 18px;
+  }
+
+  .search-box {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .content-layout {
+    grid-template-columns: 1fr;
+    padding: 20px 18px 40px;
+  }
+
+  .category-panel {
+    position: static;
+    padding: 14px;
+  }
+
+  .category-list {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+  }
+
+  .category-list button {
+    width: auto;
+    min-width: max-content;
+    gap: 8px;
+  }
+
+  .shipping-card,
+  .panel-heading small {
+    display: none;
+  }
+
+  .product-grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 540px) {
+  .brand strong {
+    max-width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cart-button > span:not(.cart-count) {
+    display: none;
+  }
+
+  .results-header {
+    align-items: flex-start;
+  }
+
+  .status-chip {
+    display: none;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-image-wrap {
+    aspect-ratio: 1.65 / 1;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+</style></head><body>
+<div class="app-shell">
+<header class="site-header">
+<a class="brand" href="#" aria-label="Mohamad Ibrahim Store home"><span class="brand-mark">MI</span><span><strong>Mohamad Ibrahim Store</strong><small>Everyday products, one simple store</small></span></a>
+<label class="search-box"><span class="visually-hidden">Search products</span><svg viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" /></svg><input id="search" type="search" placeholder="Search products..." autocomplete="off"><button id="clear" type="button" class="clear-search" aria-label="Clear search" style="display:none">×</button></label>
+<button type="button" class="cart-button" aria-label="Shopping cart"><svg viewBox="0 0 24 24"><path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 7H6m4 12a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" /></svg><span>Cart</span><span id="cartCount" class="cart-count">0</span></button>
+</header>
+<div class="content-layout"><aside class="category-panel"><div class="panel-heading"><span>Categories</span><small>15 products</small></div><nav id="categories" class="category-list"></nav><div class="shipping-card"><span>🚚</span><div><strong>Free delivery</strong><small>On orders over C$75</small></div></div></aside>
+<main class="product-area"><section class="results-header"><div><p class="eyebrow">Product catalogue</p><h1 id="title">All</h1><p id="countText">15 products found</p></div><div id="statusChip" class="status-chip" style="display:none">Search active</div></section><section id="grid" class="product-grid"></section><section id="empty" class="empty-state" style="display:none"><div>⌕</div><h2>No products found</h2><p>Try a different search term or select another category.</p><button id="showAll" type="button">Show all products</button></section></main></div>
+<footer><span>© 2026 Mohamad Ibrahim Store</span><span>Angular Ecommerce Project</span></footer></div>
+<script>
+const products=[{"id": "P001", "name": "Wireless Headphones", "description": "Noise-cancelling over-ear headphones with 35-hour battery life.", "price": 149.99, "imageUrl": "images/P001.svg", "inStock": true, "category": "Electronics"}, {"id": "P002", "name": "4K Monitor", "description": "32-inch UHD display with vivid colour and slim bezels.", "price": 329.99, "imageUrl": "images/P002.svg", "inStock": true, "category": "Electronics"}, {"id": "P003", "name": "Portable SSD", "description": "1 TB high-speed portable solid-state drive with USB-C.", "price": 139.99, "imageUrl": "images/P003.svg", "inStock": false, "category": "Electronics"}, {"id": "P004", "name": "Smartphone Stand", "description": "Adjustable aluminium stand for smartphones and small tablets.", "price": 19.99, "imageUrl": "images/P004.svg", "inStock": true, "category": "Accessories"}, {"id": "P005", "name": "Mechanical Keyboard", "description": "Compact keyboard with tactile switches and white backlighting.", "price": 89.99, "imageUrl": "images/P005.svg", "inStock": true, "category": "Accessories"}, {"id": "P006", "name": "Wireless Mouse", "description": "Ergonomic rechargeable mouse with silent buttons.", "price": 34.99, "imageUrl": "images/P006.svg", "inStock": false, "category": "Accessories"}, {"id": "P007", "name": "Air Purifier", "description": "Quiet HEPA air purifier designed for bedrooms and offices.", "price": 119.99, "imageUrl": "images/P007.svg", "inStock": true, "category": "Home"}, {"id": "P008", "name": "LED Desk Lamp", "description": "Dimmable task lamp with adjustable colour temperature.", "price": 44.99, "imageUrl": "images/P008.svg", "inStock": true, "category": "Home"}, {"id": "P009", "name": "Coffee Maker", "description": "Programmable 12-cup coffee maker with reusable filter.", "price": 74.99, "imageUrl": "images/P009.svg", "inStock": true, "category": "Home"}, {"id": "P010", "name": "Smart Watch", "description": "Fitness tracking smartwatch with heart-rate and sleep monitoring.", "price": 199.99, "imageUrl": "images/P010.svg", "inStock": true, "category": "Wearables"}, {"id": "P011", "name": "Fitness Band", "description": "Lightweight activity band with a seven-day battery.", "price": 59.99, "imageUrl": "images/P011.svg", "inStock": false, "category": "Wearables"}, {"id": "P012", "name": "Smart Ring", "description": "Discreet wellness tracker with sleep and recovery insights.", "price": 179.99, "imageUrl": "images/P012.svg", "inStock": true, "category": "Wearables"}, {"id": "P013", "name": "Classic Hoodie", "description": "Soft cotton-blend hoodie with a relaxed unisex fit.", "price": 54.99, "imageUrl": "images/P013.svg", "inStock": true, "category": "Clothing"}, {"id": "P014", "name": "Running Shoes", "description": "Breathable everyday trainers with cushioned support.", "price": 109.99, "imageUrl": "images/P014.svg", "inStock": true, "category": "Clothing"}, {"id": "P015", "name": "Winter Jacket", "description": "Water-resistant insulated jacket for cold-weather comfort.", "price": 159.99, "imageUrl": "images/P015.svg", "inStock": false, "category": "Clothing"}];
+const categories=['All','Electronics','Accessories','Home','Wearables','Clothing'];
+let selected='All'; let term=''; let cart=0;
+const el=(id)=>document.getElementById(id);
+function money(n){return new Intl.NumberFormat('en-CA',{style:'currency',currency:'CAD'}).format(n)}
+function filtered(){const t=term.trim().toLowerCase();return products.filter(p=>(selected==='All'||p.category===selected)&&(!t||(`${p.name} ${p.description} ${p.category}`).toLowerCase().includes(t))))}
+function renderCategories(){el('categories').innerHTML=categories.map(c=>`<button type="button" data-category="${c}" class="${selected===c?'active':''}"><span>${c}</span><span class="category-count">${c==='All'?products.length:products.filter(p=>p.category===c).length}</span></button>`).join('');document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>{selected=b.dataset.category;render();})}
+function render(){renderCategories(); const list=filtered(); el('title').textContent=selected; el('countText').innerHTML=`${list.length} ${list.length===1?'product':'products'} found${term?` for “${term}”`:''}`;el('statusChip').style.display=term?'block':'none';el('clear').style.display=term?'grid':'none';el('empty').style.display=list.length?'none':'grid';el('grid').style.display=list.length?'grid':'none';el('grid').innerHTML=list.map(p=>`<article class="product-card"><div class="product-image-wrap"><img src="${p.imageUrl}" alt="${p.name}"><span class="product-id">${p.id}</span><span class="stock-badge ${p.inStock?'':'out-of-stock'}">${p.inStock?'In Stock':'Out of Stock'}</span></div><div class="product-content"><span class="product-category">${p.category}</span><h2>${p.name}</h2><p>${p.description}</p><div class="product-footer"><strong>${money(p.price)}</strong><button type="button" data-add="${p.id}" ${p.inStock?'':'disabled'}>${p.inStock?'Add to cart':'Unavailable'}</button></div></div></article>`).join('');document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{cart++;el('cartCount').textContent=cart;})}
+el('search').addEventListener('input',e=>{term=e.target.value;render();});el('clear').onclick=()=>{term='';el('search').value='';render();};el('showAll').onclick=()=>{term='';selected='All';el('search').value='';render();};
+const q=new URLSearchParams(location.search); if(q.get('category')) selected=q.get('category'); if(q.get('search')){term=q.get('search');el('search').value=term;} render();
+</script></body></html>
